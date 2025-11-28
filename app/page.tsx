@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 
 const heroImage =
@@ -159,12 +158,10 @@ export default function Home() {
           </div>
           <div className="mt-16">
             <div className="relative h-64 overflow-hidden rounded-2xl bg-zinc-100 shadow-sm md:h-96">
-              <Image
+              <img
                 src={heroImage}
                 alt="Regenlanes minimalist interior"
-                fill
-                priority
-                className="object-cover"
+                className="absolute inset-0 h-full w-full object-cover"
                 sizes="(min-width: 1024px) 900px, 100vw"
               />
             </div>
@@ -211,11 +208,10 @@ export default function Home() {
                 key={project.title}
                 className={`group relative h-80 overflow-hidden rounded-2xl ${project.span ?? ""}`}
               >
-                <Image
+                <img
                   src={project.image}
                   alt={project.title}
-                  fill
-                  className="object-cover transition duration-500 group-hover:scale-105"
+                  className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105"
                   sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
                 />
                 <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition duration-300 group-hover:opacity-100">

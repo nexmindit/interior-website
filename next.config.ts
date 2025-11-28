@@ -2,7 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "export",
+  
   images: {
+    disableStaticImages: true,
     remotePatterns: [
       {
         protocol: "https",
