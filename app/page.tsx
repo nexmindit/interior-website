@@ -49,12 +49,6 @@ const services = [
   },
 ];
 
-const socialLinks = [
-  { label: "Instagram", href: "#" },
-  { label: "Facebook", href: "#" },
-  { label: "TikTok", href: "#" },
-];
-
 export default function Home() {
   // Slider images: hero + project images
   const slideImages = [heroImage, ...projects.map((p) => p.image)];
@@ -334,36 +328,6 @@ export default function Home() {
           </div>
         </form>
       </section>
-
-      <footer className="border-t border-zinc-100 bg-zinc-50 px-6 py-12">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 text-sm text-zinc-500 md:flex-row">
-          <div className="flex items-center gap-2 text-black">
-            <svg
-              className="h-6 w-6"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-            >
-              <path d="M12 3L3 8L12 13L21 8L12 3Z" />
-              <path d="M3 8V18L12 23V13" />
-              <path d="M21 8V18L12 23" />
-            </svg>
-            <span className="font-semibold lowercase">regenlanes</span>
-          </div>
-          <p className="text-center">&copy; 2024 Regenlanes. All rights reserved.</p>
-          <div className="flex gap-6">
-            {socialLinks.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                className="transition hover:text-black"
-              >
-                {social.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

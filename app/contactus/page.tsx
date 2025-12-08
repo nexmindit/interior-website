@@ -29,9 +29,9 @@ const contactDetails = [
 		icon: Mail,
 	},
 	{
-		label: "Website",
-		value: "www.regenlanes.com",
-		href: "https://www.regenlanes.com",
+		label: "Line Official",
+		value: "@regenlanes",
+		href: "https://line.me/en/",
 		icon: Globe,
 	},
 ];
@@ -193,15 +193,6 @@ export default function ContactPage() {
 					</div>
 				</section>
 
-				<footer className="mt-16 border-t border-gray-100 bg-white px-6 py-12">
-					<div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 md:flex-row">
-						<div className="flex items-center gap-2">
-							<div className="flex h-8 w-8 items-center justify-center rounded-sm bg-black text-xs font-bold text-white">R</div>
-							<span className="text-lg font-medium tracking-tight">regenlanes</span>
-						</div>
-						<p className="text-xs uppercase tracking-[0.2em] text-gray-500">© 2025 Regen Lanes Holding Company Limited.</p>
-					</div>
-				</footer>
 			</main>
 		</div>
 	);

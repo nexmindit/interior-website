@@ -147,6 +147,7 @@ export default function FullHouseInteriorRenovationPage() {
 							))}
 
 							<div className="group relative flex aspect-square items-center justify-center rounded-md bg-black text-center text-white">
+                                <Link href="/contactus" className="absolute inset-0 z-10" />
 								<div className="p-4">
 									<p className="mb-2 text-lg font-semibold md:text-xl">And More</p>
 									<p className="text-xs font-light text-zinc-300">Custom requests welcome</p>
@@ -171,18 +172,6 @@ export default function FullHouseInteriorRenovationPage() {
 					</div>
 				</section>
 
-				{/* Footer */}
-				<footer className="mt-auto border-t border-zinc-100 bg-white px-6 py-12">
-					<div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 md:flex-row">
-						<div className="flex items-center gap-2">
-							<div className="flex h-7 w-7 items-center justify-center rounded-sm bg-black text-[10px] font-bold uppercase text-white">
-								R
-							</div>
-							<span className="text-lg font-semibold tracking-tight">regenlanes</span>
-						</div>
-						<div className="text-xs font-light tracking-[0.2em] text-zinc-400">© 2025 Regen Lanes Holding Company Limited.</div>
-					</div>
-				</footer>
 			</main>
 		</div>
 	);

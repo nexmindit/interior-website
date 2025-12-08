@@ -162,20 +162,6 @@ export default function BathroomRenovationPage() {
 					</div>
 				</section>
 
-				{/* Footer */}
-				<footer className="mt-12 border-t border-zinc-100 bg-white px-6 py-12">
-					<div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 md:flex-row">
-						<div className="flex items-center gap-2">
-							<div className="flex h-7 w-7 items-center justify-center rounded-sm bg-black text-[10px] font-bold uppercase text-white">
-								R
-							</div>
-							<span className="text-lg font-semibold tracking-tight">regenlanes</span>
-						</div>
-						<div className="text-xs font-light tracking-[0.2em] text-zinc-400">
-							2025 Regen Lanes Holding Company Limited.
-						</div>
-					</div>
-				</footer>
 			</main>
 		</div>
 	);
