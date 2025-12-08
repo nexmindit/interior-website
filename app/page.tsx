@@ -2,6 +2,20 @@
 
 import { useState } from "react";
 
+import Image from "next/image";
+import Link from "next/link";
+
+interface SubLink {
+  href: string;
+  label: string;
+}
+
+interface NavLink {
+  href: string;
+  label: string;
+  subLinks?: SubLink[];
+}
+
 const heroImage =
   "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1974&auto=format&fit=crop";
 
@@ -45,10 +59,22 @@ const services = [
   },
 ];
 
-const navLinks = [
-  { href: "#about", label: "Studio" },
-  { href: "#projects", label: "Projects" },
-  { href: "#services", label: "Services" },
+const navLinks: NavLink[] = [
+  { href: "/", label: "Home" },
+  { href: "#about", label: "About us" },
+  {
+    href: "#services",
+    label: "Services",
+    // ใส่ข้อมูลเมนูย่อยตรงนี้
+    subLinks: [
+      { label: "Full Home Interior Construction & Renovation", href: "#" },
+      { label: "Kitchen Remodeling", href: "#" },
+      { label: "Bathroom Renovation", href: "#" },
+      { label: "Single Room Transformations", href: "#" },
+      { label: "Custom Furniture", href: "#" },
+    ],
+  },
+  { href: "#contact", label: "Contact" },
 ];
 
 const socialLinks = [
@@ -64,41 +90,49 @@ export default function Home() {
     <div className="min-h-screen bg-white text-zinc-900">
       <nav className="fixed inset-x-0 top-0 z-50 border-b border-zinc-100 bg-white/90 backdrop-blur-md">
         <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-6">
-          <div className="flex items-center gap-3">
-            <svg
-              className="h-8 w-8 text-black"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-            >
-              <path d="M12 3L3 8L12 13L21 8L12 3Z" />
-              <path d="M3 8V18L12 23V13" />
-              <path d="M21 8V18L12 23" />
-              <path d="M12 13V23" />
-              <path d="M7.5 10.5L16.5 15.5" strokeDasharray="2 2" />
-            </svg>
+          <div className="flex items-center gap-1">
+            <Image src="/images/Logo.png" alt="Regenlanes Logo" width={36} height={36} />  
             <span className="text-xl font-semibold tracking-tight lowercase">
               regenlanes
             </span>
           </div>
           <div className="hidden items-center gap-8 md:flex">
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm text-zinc-500 transition hover:text-black"
-              >
-                {link.label}
-              </a>
+              <div key={link.label} className="group relative">
+                <Link
+                  href={link.href}
+                  className="flex items-center gap-1 text-sm text-zinc-500 transition hover:text-black py-2"
+                >
+                  {link.label}
+                  {/* แสดงลูกศรลง ถ้ามีเมนูย่อย */}
+                  {link.subLinks && (
+                    <svg className="w-4 h-4 transition-transform group-hover:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  )}
+                </Link>
+
+                {/* Dropdown Menu Logic */}
+                {link.subLinks && (
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-in-out pt-2">
+                    <div className="rounded-xl border border-zinc-100 bg-white p-2 shadow-lg ring-1 ring-black/5">
+                      {link.subLinks.map((sub) => (
+                        <Link
+                          key={sub.label}
+                          href={sub.href}
+                          className="block rounded-lg px-4 py-3 text-sm text-zinc-600 hover:bg-zinc-50 hover:text-black"
+                        >
+                          {sub.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
             ))}
-            <a
-              href="#contact"
-              className="rounded-full border border-black px-5 py-2 text-sm font-medium uppercase tracking-wide transition hover:bg-black hover:text-white"
-            >
-              Contact
-            </a>
           </div>
+
+          {/* Mobile Menu Button */}
           <button
             type="button"
             className="md:hidden"
@@ -106,25 +140,42 @@ export default function Home() {
             aria-label="Toggle navigation"
           >
             <svg className="h-6 w-6" viewBox="0 0 24 24" stroke="currentColor">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
         </div>
-        <div className={`${menuOpen ? "block" : "hidden"} border-t border-zinc-100 md:hidden`}>
-          {[...navLinks, { href: "#contact", label: "Contact" }].map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="block px-6 py-4 text-sm text-zinc-700 transition hover:bg-zinc-50"
-              onClick={() => setMenuOpen(false)}
-            >
-              {link.label}
-            </a>
+
+        {/* --- Mobile Menu --- */}
+        <div
+          className={`${
+            menuOpen ? "block" : "hidden"
+          } border-t border-zinc-100 bg-white md:hidden max-h-[80vh] overflow-y-auto`}
+        >
+          {navLinks.map((link) => (
+            <div key={link.label}>
+              <a
+                href={link.href}
+                className="block px-6 py-4 text-sm font-medium text-zinc-900 transition hover:bg-zinc-50 border-b border-zinc-50"
+                onClick={() => !link.subLinks && setMenuOpen(false)}
+              >
+                {link.label}
+              </a>
+              {/* Mobile Submenu List */}
+              {link.subLinks && (
+                <div className="bg-zinc-50 px-6 py-2">
+                  {link.subLinks.map((sub) => (
+                    <a
+                      key={sub.label}
+                      href={sub.href}
+                      className="block py-3 text-sm text-zinc-500 hover:text-black"
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      • {sub.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
         </div>
       </nav>
