@@ -183,15 +183,13 @@ export default function Home() {
       <header className="relative flex min-h-screen items-center justify-center px-6 pt-32 pb-16">
         <div className="mx-auto max-w-5xl text-center">
           <p className="text-xs font-medium uppercase tracking-[0.3em] text-zinc-400">
-            minimalist interior & architecture studio
+            Regen Lanes — Interior Construction & Custom Furniture
           </p>
           <h1 className="mt-6 text-4xl font-light leading-tight text-black md:text-7xl">
-            Design that <span className="font-semibold">regenerates</span> space.
+            Interior Construction • Renovation • Custom Furniture
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-500">
-            Precise and architectural interiors that harmonize structure with
-            human rituals. Regenlanes crafts monochrome, light-filled rooms for
-            residences and modern commercial landmarks.
+            At Regen Lanes, we transform spaces with precision, creativity, and craftsmanship. Whether you’re renovating an entire home or upgrading a single room, our team delivers beautiful, functional interiors built to last. From full-scale construction to bespoke furniture, we bring your ideas to life with exceptional quality — and at a fraction of the cost.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
