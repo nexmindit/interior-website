@@ -4,18 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { Award, FileCheck, Clock, Ruler, Blocks } from "lucide-react";
 
 import Image from "next/image";
-import Link from "next/link";
-
-interface SubLink {
-  href: string;
-  label: string;
-}
-
-interface NavLink {
-  href: string;
-  label: string;
-  subLinks?: SubLink[];
-}
+import Navbar from "./components/Navbar";
 
 const heroImage =
   "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1974&auto=format&fit=crop";
@@ -60,24 +49,6 @@ const services = [
   },
 ];
 
-const navLinks: NavLink[] = [
-  { href: "/", label: "Home" },
-  { href: "#about", label: "About us" },
-  {
-    href: "#services",
-    label: "Services",
-    // ใส่ข้อมูลเมนูย่อยตรงนี้
-    subLinks: [
-      { label: "Full Home Interior Construction & Renovation", href: "#" },
-      { label: "Kitchen Remodeling", href: "#" },
-      { label: "Bathroom Renovation", href: "#" },
-      { label: "Single Room Transformations", href: "#" },
-      { label: "Custom Furniture", href: "#" },
-    ],
-  },
-  { href: "#contact", label: "Contact" },
-];
-
 const socialLinks = [
   { label: "Instagram", href: "#" },
   { label: "Facebook", href: "#" },
@@ -85,7 +56,6 @@ const socialLinks = [
 ];
 
 export default function Home() {
-  const [menuOpen, setMenuOpen] = useState(false);
   // Slider images: hero + project images
   const slideImages = [heroImage, ...projects.map((p) => p.image)];
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -108,97 +78,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white text-zinc-900">
-      <nav className="fixed inset-x-0 top-0 z-50 border-b border-zinc-100 bg-white/90 backdrop-blur-md">
-        <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-6">
-          <div className="flex items-center gap-1">
-            <Image src="/images/Logo.png" alt="Regenlanes Logo" width={36} height={36} />  
-            <span className="text-xl font-semibold tracking-tight lowercase">
-              regenlanes
-            </span>
-          </div>
-          <div className="hidden items-center gap-8 md:flex">
-            {navLinks.map((link) => (
-              <div key={link.label} className="group relative">
-                <Link
-                  href={link.href}
-                  className="flex items-center gap-1 text-sm text-zinc-500 transition hover:text-black py-2"
-                >
-                  {link.label}
-                  {/* แสดงลูกศรลง ถ้ามีเมนูย่อย */}
-                  {link.subLinks && (
-                    <svg className="w-4 h-4 transition-transform group-hover:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  )}
-                </Link>
-
-                {/* Dropdown Menu Logic */}
-                {link.subLinks && (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-in-out pt-2">
-                    <div className="rounded-xl border border-zinc-100 bg-white p-2 shadow-lg ring-1 ring-black/5">
-                      {link.subLinks.map((sub) => (
-                        <Link
-                          key={sub.label}
-                          href={sub.href}
-                          className="block rounded-lg px-4 py-3 text-sm text-zinc-600 hover:bg-zinc-50 hover:text-black"
-                        >
-                          {sub.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            type="button"
-            className="md:hidden"
-            onClick={() => setMenuOpen((prev) => !prev)}
-            aria-label="Toggle navigation"
-          >
-            <svg className="h-6 w-6" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-        </div>
-
-        {/* --- Mobile Menu --- */}
-        <div
-          className={`${
-            menuOpen ? "block" : "hidden"
-          } border-t border-zinc-100 bg-white md:hidden max-h-[80vh] overflow-y-auto`}
-        >
-          {navLinks.map((link) => (
-            <div key={link.label}>
-              <a
-                href={link.href}
-                className="block px-6 py-4 text-sm font-medium text-zinc-900 transition hover:bg-zinc-50 border-b border-zinc-50"
-                onClick={() => !link.subLinks && setMenuOpen(false)}
-              >
-                {link.label}
-              </a>
-              {/* Mobile Submenu List */}
-              {link.subLinks && (
-                <div className="bg-zinc-50 px-6 py-2">
-                  {link.subLinks.map((sub) => (
-                    <a
-                      key={sub.label}
-                      href={sub.href}
-                      className="block py-3 text-sm text-zinc-500 hover:text-black"
-                      onClick={() => setMenuOpen(false)}
-                    >
-                      • {sub.label}
-                    </a>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </nav>
+      <Navbar />
 
       <header className="relative flex min-h-screen items-center justify-center px-6 pt-32 pb-16">
         <div className="mx-auto max-w-5xl text-center">
@@ -227,24 +107,27 @@ export default function Home() {
           </div>
           <div className="mt-16">
             {/* Slider Component */}
-            <div className="relative w-full aspect-[16/9] md:aspect-[21/9] max-w-5xl mx-auto rounded-xl overflow-hidden shadow-sm group">
+            <div className="relative w-full aspect-video md:aspect-21/9 max-w-5xl mx-auto rounded-xl overflow-hidden shadow-sm group">
               {/* Slides Container */}
               <div id="slider-container" className="w-full h-full relative bg-gray-100">
                 {slideImages.map((src, idx) => (
-                  <img
+                  <Image
                     key={idx}
                     src={src}
                     alt={`Slide ${idx + 1}`}
-                    className={`absolute inset-0 h-full w-full object-cover ${
+                    fill
+                    sizes="(min-width: 1024px) 1024px, 100vw"
+                    className={`absolute inset-0 object-cover ${
                       idx === currentSlide ? "fade-enter-active" : "fade-exit-active"
                     }`}
-                    style={{ display: Math.abs(idx - currentSlide) > 1 ? 'none' : 'block' }}
+                    style={{ display: Math.abs(idx - currentSlide) > 1 ? "none" : "block" }}
+                    priority={idx === 0}
                   />
                 ))}
               </div>
 
               {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+              <div className="absolute inset-0 bg-linear-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 
               {/* Controls */}
               <button
@@ -311,10 +194,10 @@ export default function Home() {
 
             <div className="space-y-6 text-brand-gray font-light leading-relaxed text-sm md:text-base">
               <p>
-                At <span className="font-medium text-black">Regen Lanes Holding Company Limited</span>, we provide end-to-end interior construction services — from structural renovations to finishing details. Whether you're transforming your entire home, upgrading your kitchen, redesigning your bathroom, or refreshing a single room, our team delivers flawless results every time.
+                At <span className="font-medium text-black">Regen Lanes Holding Company Limited</span>, we provide end-to-end interior construction services — from structural renovations to finishing details. Whether you are transforming your entire home, upgrading your kitchen, redesigning your bathroom, or refreshing a single room, our team delivers flawless results every time.
               </p>
               <p>
-                We also build custom furniture, handcrafted to your style and measurements. Show us a picture, and we'll recreate it at a fraction of the cost without compromising on quality.
+                We also build custom furniture, handcrafted to your style and measurements. Show us a picture, and we will recreate it at a fraction of the cost without compromising on quality.
               </p>
             </div>
           </div>
@@ -368,11 +251,12 @@ export default function Home() {
                 key={project.title}
                 className={`group relative h-80 overflow-hidden rounded-2xl ${project.span ?? ""}`}
               >
-                <img
+                <Image
                   src={project.image}
                   alt={project.title}
-                  className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  fill
                   sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
+                  className="absolute inset-0 object-cover transition duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition duration-300 group-hover:opacity-100">
                   <p className="text-lg font-light text-white">{project.title}</p>
