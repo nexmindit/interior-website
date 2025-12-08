@@ -63,3 +63,13 @@ body {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
+
+/* Fade in up animation */
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+@keyframes fadeInUp {
+  to { opacity: 1; transform: translateY(0); }
+}

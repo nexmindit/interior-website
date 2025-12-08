@@ -25,9 +25,9 @@ const navLinks: NavLink[] = [
     subLinks: [
       { label: "Full Home Interior Construction & Renovation", href: "/services/full-house-interior-renovation" },
       { label: "Kitchen Remodeling", href: "/services/kitchen-remodelling" },
-      { label: "Bathroom Renovation", href: "/#services" },
-      { label: "Single Room Transformations", href: "/#services" },
-      { label: "Custom Furniture", href: "/#services" },
+      { label: "Bathroom Renovation", href: "/services/bathroom-renovation" },
+      { label: "Single Room Transformations", href: "/services/single-room-transformation" },
+      { label: "Custom Furniture", href: "/services/custom-furniture" },
     ],
   },
   { href: "/contactus", label: "Contact" },

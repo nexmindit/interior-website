@@ -5,7 +5,7 @@ import Navbar from "../../components/Navbar";
 import { Droplets, Grid, ShowerHead, BoxSelect, Wind, Gem } from "lucide-react";
 
 const heroImage =
-	"https://images.unsplash.com/photo-1552321901-b84570192d1d?q=80&w=2670&auto=format&fit=crop";
+	"https://plus.unsplash.com/premium_photo-1661902468735-eabf780f8ff6?q=80&w=2574&auto=format&fit=crop";
 
 const features = [
 	{
@@ -41,10 +41,10 @@ const features = [
 ];
 
 const bathtubImage =
-	"https://images.unsplash.com/photo-1543489822-c495e94f62f5?q=80&w=2669&auto=format&fit=crop";
+	"https://plus.unsplash.com/premium_photo-1670360414883-b06c690ba80b?q=80&w=2671&auto=format&fit=crop";
 
 const textureImage =
-	"https://images.unsplash.com/photo-1584622050111-993a426fbf0a?q=80&w=2000&auto=format&fit=crop";
+	"https://images.unsplash.com/photo-1558346648-9757f2fa4474?q=80&w=2670&auto=format&fit=crop";
 
 export default function BathroomRenovationPage() {
 	return (
@@ -172,7 +172,7 @@ export default function BathroomRenovationPage() {
 							<span className="text-lg font-semibold tracking-tight">regenlanes</span>
 						</div>
 						<div className="text-xs font-light tracking-[0.2em] text-zinc-400">
-							© 2025 Regen Lanes Holding Company Limited.
+							2025 Regen Lanes Holding Company Limited.
 						</div>
 					</div>
 				</footer>
