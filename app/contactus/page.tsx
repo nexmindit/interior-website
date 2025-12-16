@@ -13,7 +13,7 @@ import {
 const contactDetails = [
 	{
 		label: "Visit us",
-		value: "20 Sukhumvit Soi 15, Bangkok 10110, Thailand",
+		value: "Ocean Tower II Building, 75/44 (23A Unit B) ชั้น 23, Sukhumvit 19 (Wattana), Klongtoey Nua, Bangkok 10110 Thailand",
 		icon: MapPin,
 	},
 	{
@@ -77,7 +77,7 @@ export default function ContactPage() {
 											key={label}
 											className="flex items-start gap-4 rounded-lg border border-gray-100 bg-gray-50 px-4 py-4"
 										>
-											<div className="flex h-10 w-10 items-center justify-center rounded-sm bg-white text-black shadow-sm">
+											<div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-sm bg-white text-black shadow-sm">
 												<Icon className="h-5 w-5" />
 											</div>
 											<div>
@@ -184,7 +184,7 @@ export default function ContactPage() {
 					<div className="mx-auto max-w-7xl overflow-hidden rounded-xl border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
 						<iframe
 							title="Regen Lanes location"
-							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.666373199898!2d100.5562!3d13.7386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29ee3e7c07447%3A0x6c6e001391694f29!2sSukhumvit%20Soi%2015!5e0!3m2!1sen!2sth!4v1620000000000!5m2!1sen!2sth"
+							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.5447!2d100.5625!3d13.7445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29ee52d34e01f%3A0x5edc6a8395a5d2d0!2sOcean%20Tower%20II!5e0!3m2!1sen!2sth!4v1702700000000!5m2!1sen!2sth"
 							allowFullScreen
 							loading="lazy"
 							referrerPolicy="no-referrer-when-downgrade"
