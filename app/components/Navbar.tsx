@@ -19,6 +19,7 @@ type NavLink = {
 const navLinks: NavLink[] = [
   { href: "/", label: "Home" },
   { href: "/aboutus", label: "About us" },
+  { href: "/portfolio", label: "Portfolio" },
   {
     href: "/services/full-house-interior-renovation",
     label: "Services",
@@ -36,6 +37,7 @@ const navLinks: NavLink[] = [
 function isActiveLink(pathname: string, href: string) {
   if (href === "/") return pathname === "/";
   if (href.startsWith("/aboutus")) return pathname.startsWith("/aboutus");
+  if (href.startsWith("/portfolio")) return pathname.startsWith("/portfolio");
   if (href.startsWith("/contactus")) return pathname.startsWith("/contactus");
   if (href.startsWith("/services")) return pathname.startsWith("/services");
   return false;
@@ -60,11 +62,10 @@ export default function Navbar() {
             <div key={link.label} className="group relative">
               <Link
                 href={link.href}
-                className={`flex items-center gap-1 py-2 text-sm transition ${
-                  isActiveLink(pathname, link.href)
-                    ? "text-black"
-                    : "text-zinc-500 hover:text-black"
-                }`}
+                className={`flex items-center gap-1 py-2 text-sm transition ${isActiveLink(pathname, link.href)
+                  ? "text-black"
+                  : "text-zinc-500 hover:text-black"
+                  }`}
                 onClick={closeMenu}
               >
                 {link.label}
@@ -119,9 +120,8 @@ export default function Navbar() {
           <div key={link.label}>
             <Link
               href={link.href}
-              className={`block px-6 py-4 text-sm font-medium transition hover:bg-zinc-50 ${
-                isActiveLink(pathname, link.href) ? "text-black" : "text-zinc-900"
-              }`}
+              className={`block px-6 py-4 text-sm font-medium transition hover:bg-zinc-50 ${isActiveLink(pathname, link.href) ? "text-black" : "text-zinc-900"
+                }`}
               onClick={() => (link.subLinks ? undefined : closeMenu())}
             >
               {link.label}
