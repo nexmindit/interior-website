@@ -87,13 +87,13 @@ export default function Home() {
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
-              href="#projects"
+              href="/portfolio"
               className="inline-flex items-center justify-center border border-black px-8 py-3 text-sm font-medium uppercase tracking-widest transition hover:bg-black hover:text-white"
             >
               View portfolio
             </a>
             <a
-              href="#contact"
+              href="/contactus"
               className="inline-flex items-center justify-center px-8 py-3 text-sm font-medium uppercase tracking-widest text-zinc-500 transition hover:text-black"
             >
               Start a project
