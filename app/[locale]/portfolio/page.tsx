@@ -12,83 +12,77 @@ type Project = {
 };
 
 const projects: Project[] = [
-  // Residential - Living room/bedroom interiors
   {
-    image: "/images/portfolio/120872d4-cf5e-4385-9378-be18df6d5684.jpg",
+    image: "/images/portfolio/020EA05B538C62EBB0CCBC174DAF4094DA40FC91.jpg",
     category: "residential",
   },
   {
-    image: "/images/portfolio/15010b21-bee1-4957-bd31-a5dc56a0ab3f.jpg",
+    image: "/images/portfolio/062D26CDB804074536170EB1C6F27D5E3D23B688.jpg",
     category: "residential",
   },
   {
-    image: "/images/portfolio/32775ae8-d0be-41fb-a19d-36dd9fed60c2.jpg",
+    image: "/images/portfolio/132259BF0E30246FCA0C3E5F6190A3DAE0FCAF66.jpg",
     category: "residential",
   },
   {
-    image: "/images/portfolio/5caf5ee2-f5b2-4f2e-bbbf-a9a85796596d.jpg",
-    category: "residential",
-  },
-  // Commercial spaces
-  {
-    image: "/images/portfolio/63fe640f-a62b-4a18-962a-728b055d98f7.jpg",
-    category: "commercial",
-  },
-  {
-    image: "/images/portfolio/64a8688a-6cb8-4fc8-8c7a-67984774e7d4.jpg",
-    category: "commercial",
-  },
-  {
-    image: "/images/portfolio/6da41fff-0684-4c69-9251-769cdd5ba84b.jpg",
-    category: "commercial",
-  },
-  // Custom Furniture / Built-ins
-  {
-    image: "/images/portfolio/8170c0f8-3e64-4441-8dd1-669d7fe5e752.jpg",
-    category: "furniture",
-  },
-  {
-    image: "/images/portfolio/84697d5f-1000-4ba7-a1a4-3177d4c5448e.jpg",
-    category: "furniture",
-  },
-  {
-    image: "/images/portfolio/8ad18b4d-43ed-4d27-9976-2d25faf8b307.jpg",
-    category: "furniture",
-  },
-  // More Residential
-  {
-    image: "/images/portfolio/8b071601-9e89-4429-a789-1cedf62f6a34.jpg",
+    image: "/images/portfolio/3B878978A8DF2E83CCA5142C960587A3CA1F0B19.jpg",
     category: "residential",
   },
   {
-    image: "/images/portfolio/8f452864-e8ec-449f-b63e-cb6018557a01.jpg",
+    image: "/images/portfolio/41DC0530A4386931194A72A99F4BEAF42457F41D.jpg",
     category: "residential",
   },
   {
-    image: "/images/portfolio/97f4df1d-958f-4107-94de-3952a3701718.jpg",
+    image: "/images/portfolio/568D12D4A9248EB7B12B9C8F3174A6AECE2A56D0.jpg",
     category: "residential",
   },
-  // More Commercial
   {
-    image: "/images/portfolio/9873cdc0-c9fa-4c80-8602-c9d0e943f34a.jpg",
-    category: "commercial",
+    image: "/images/portfolio/597E34CFA4488AFCD5018CD4A0B6BFD2C79EDBA6.jpg",
+    category: "residential",
   },
   {
-    image: "/images/portfolio/a33d1325-12a7-44ef-bc7c-83ff410c1de6.jpg",
-    category: "commercial",
-  },
-  // More Furniture
-  {
-    image: "/images/portfolio/a6c57804-3c41-43f4-9a01-a209c2b7c301.jpg",
-    category: "furniture",
+    image: "/images/portfolio/7F57DFE0AFACE367FB80F7737B2DEFBED7B5094E.jpg",
+    category: "residential",
   },
   {
-    image: "/images/portfolio/e6ece9e7-4f91-449e-a133-f64d9c04923e.jpg",
-    category: "furniture",
+    image: "/images/portfolio/8062917E49E13885B3B8E1F38317C3218CD1F676.jpg",
+    category: "residential",
   },
   {
-    image: "/images/portfolio/f2e8141d-f030-4ea4-9c6c-385b9c0714dc.jpg",
-    category: "furniture",
+    image: "/images/portfolio/83439CE4352029CB2D9A6277E28627553085AE9A.jpg",
+    category: "residential",
+  },
+  {
+    image: "/images/portfolio/842AB1263FC336B7DAE94E81C5EC97EDE86E8EB0.jpg",
+    category: "residential",
+  },
+  {
+    image: "/images/portfolio/8EDC5E872811B218D7D510D84382BDA4F9740EA1.jpg",
+    category: "residential",
+  },
+  {
+    image: "/images/portfolio/9610F8F70459A2EEC66F2EB26573E1077DFB4F53.jpg",
+    category: "residential",
+  },
+  {
+    image: "/images/portfolio/CF0FC618DC7E27DC2E4B7CFD4669A3A350B03182.jpg",
+    category: "residential",
+  },
+  {
+    image: "/images/portfolio/D63110F2095EDC1C302021E26056079C2FB611B8.jpg",
+    category: "residential",
+  },
+  {
+    image: "/images/portfolio/D9939A89B8E912B8BA012A75EE526AC870720E62.jpg",
+    category: "residential",
+  },
+  {
+    image: "/images/portfolio/F21A5FA5007F49A1A6564E52BB4858C5FF5A9586.jpg",
+    category: "residential",
+  },
+  {
+    image: "/images/portfolio/F2CD12E545C3B727DF568F35D5EC8EA2D661ED6A.jpg",
+    category: "residential",
   },
 ];
 
