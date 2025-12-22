@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "../../../i18n/navigation";
 
 import Navbar from "../../../components/Navbar";
 import { Award, Camera, Palette, Ruler } from "lucide-react";
