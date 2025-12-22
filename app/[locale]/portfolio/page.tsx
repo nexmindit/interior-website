@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import Navbar from "../components/Navbar";
+import Navbar from "../../components/Navbar";
 import { useTranslations } from "next-intl";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -259,8 +259,8 @@ export default function PortfolioPage() {
                   setCurrentIndex(index);
                 }}
                 className={`relative w-12 h-12 md:w-16 md:h-16 flex-shrink-0 overflow-hidden transition-all duration-200 ${index === currentIndex
-                    ? "ring-2 ring-white opacity-100"
-                    : "opacity-50 hover:opacity-80"
+                  ? "ring-2 ring-white opacity-100"
+                  : "opacity-50 hover:opacity-80"
                   }`}
               >
                 <Image

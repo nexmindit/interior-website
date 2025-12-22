@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import Navbar from "../../components/Navbar";
+import Navbar from "../../../components/Navbar";
 import { Award, Camera, Palette, Ruler } from "lucide-react";
 
 const heroImage =
@@ -147,7 +147,7 @@ export default function FullHouseInteriorRenovationPage() {
 							))}
 
 							<div className="group relative flex aspect-square items-center justify-center rounded-md bg-black text-center text-white">
-                                <Link href="/contactus" className="absolute inset-0 z-10" />
+								<Link href="/contactus" className="absolute inset-0 z-10" />
 								<div className="p-4">
 									<p className="mb-2 text-lg font-semibold md:text-xl">And More</p>
 									<p className="text-xs font-light text-zinc-300">Custom requests welcome</p>

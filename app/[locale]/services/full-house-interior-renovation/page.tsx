@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 
-import Navbar from "../../components/Navbar";
+import Navbar from "../../../components/Navbar";
 import {
 	ArrowRight,
 	ClipboardCheck,

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import Navbar from "../../components/Navbar";
+import Navbar from "../../../components/Navbar";
 import { Bed, Monitor, Shirt, Sofa } from "lucide-react";
 
 const heroImage =

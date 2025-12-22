@@ -1,6 +1,6 @@
 "use client";
 
-import Navbar from "../components/Navbar";
+import Navbar from "../../components/Navbar";
 import { useTranslations } from "next-intl";
 import {
 	Phone,
