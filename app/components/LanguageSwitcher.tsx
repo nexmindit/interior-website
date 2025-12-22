@@ -21,10 +21,14 @@ export default function LanguageSwitcher() {
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
+    const router = useRouter();
+    const pathname = usePathname();
+
     const switchLocale = (newLocale: string) => {
         startTransition(() => {
-            document.cookie = `locale=${newLocale};path=/;max-age=31536000`;
-            window.location.reload();
+            // Save preference for next visit
+            document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000`; // 1 year
+            router.replace(pathname, { locale: newLocale });
         });
         setIsOpen(false);
     };

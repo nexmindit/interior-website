@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { Award, FileCheck, Clock, Ruler, Blocks } from "lucide-react";
+import { Link } from "../i18n/navigation";
 import { useTranslations } from "next-intl";
 
 import Image from "next/image";
@@ -95,18 +96,18 @@ export default function Home() {
             {t("heroDescription")}
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a
+            <Link
               href="/portfolio"
               className="inline-flex items-center justify-center border border-black px-8 py-3 text-sm font-medium uppercase tracking-widest transition hover:bg-black hover:text-white"
             >
               {t("viewPortfolio")}
-            </a>
-            <a
+            </Link>
+            <Link
               href="/contactus"
               className="inline-flex items-center justify-center px-8 py-3 text-sm font-medium uppercase tracking-widest text-zinc-500 transition hover:text-black"
             >
               {t("startProject")}
-            </a>
+            </Link>
           </div>
           <div className="mt-16">
             {/* Slider Component */}
@@ -233,12 +234,12 @@ export default function Home() {
               </p>
               <h2 className="mt-3 text-3xl font-light text-black">{t("spatialCaseStudies")}</h2>
             </div>
-            <a
-              href="#"
+            <Link
+              href="/portfolio"
               className="text-sm text-zinc-500 transition hover:text-black"
             >
               {t("seeAll")}
-            </a>
+            </Link>
           </div>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project) => (
