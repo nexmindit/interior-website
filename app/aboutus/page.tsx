@@ -3,10 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
+import { useTranslations } from "next-intl";
 import {
 	Award,
 	CheckCircle2,
-	Clock3,
 	Compass,
 	Eye,
 	Hammer,
@@ -19,49 +19,38 @@ const heroImage =
 const workshopImage =
 	"https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=2400&auto=format&fit=crop";
 
-const values = [
-	{
-		Icon: Award,
-		title: "Craftsmanship first",
-		copy: "Built by specialists who obsess over joints, finishes, and structural integrity.",
-	},
-	{
-		Icon: Ruler,
-		title: "Precision planning",
-		copy: "Measured drawings, clear scopes, and realistic timelines keep projects on track.",
-	},
-	{
-		Icon: Hammer,
-		title: "End-to-end delivery",
-		copy: "Construction, millwork, and installation handled by one accountable team.",
-	},
-	{
-		Icon: Sparkles,
-		title: "Minimal, warm, livable",
-		copy: "Clean lines, honest materials, and lighting that make spaces feel calm and intentional.",
-	},
-];
-
-const process = [
-	{
-		title: "Discover",
-		desc: "We listen, survey, and translate your needs into a clear brief with budget ranges.",
-	},
-	{
-		title: "Design + Detail",
-		desc: "Layouts, 3D sketches, and material boards align on aesthetics before we build.",
-	},
-	{
-		title: "Build",
-		desc: "Our site and workshop teams fabricate, install, and quality-check every component.",
-	},
-	{
-		title: "Hand over",
-		desc: "We walk through, fine-tune, and leave you with a space that works from day one.",
-	},
-];
-
 export default function AboutPage() {
+	const t = useTranslations("about");
+
+	const values = [
+		{
+			Icon: Award,
+			titleKey: "values.craftsmanshipFirst",
+			descKey: "values.craftsmanshipFirstDesc",
+		},
+		{
+			Icon: Ruler,
+			titleKey: "values.precisionPlanning",
+			descKey: "values.precisionPlanningDesc",
+		},
+		{
+			Icon: Hammer,
+			titleKey: "values.endToEnd",
+			descKey: "values.endToEndDesc",
+		},
+		{
+			Icon: Sparkles,
+			titleKey: "values.minimalWarm",
+			descKey: "values.minimalWarmDesc",
+		},
+	];
+
+	const philosophyPoints = [
+		t("sustainableMaterial"),
+		t("clientCentric"),
+		t("precisionEngineering"),
+	];
+
 	return (
 		<div className="bg-white text-zinc-900">
 			<Navbar />
@@ -69,14 +58,13 @@ export default function AboutPage() {
 			<main className="pt-24 md:pt-28">
 				<section className="px-6 md:px-12 text-center">
 					<p className="text-[10px] uppercase tracking-[0.25em] text-zinc-400 mb-5 font-semibold">
-						Who we are
+						{t("whoWeAre")}
 					</p>
 					<h1 className="text-4xl md:text-6xl font-semibold tracking-tight text-black">
-						About Regen Lanes
+						{t("title")}
 					</h1>
 					<p className="mx-auto mt-6 max-w-3xl text-lg md:text-xl leading-relaxed text-zinc-600">
-						Regen Lanes Holding Company Limited is a Bangkok-based interior construction and custom furniture partner
-						dedicated to transforming residential and commercial spaces with precision, longevity, and calm minimalism.
+						{t("description")}
 					</p>
 				</section>
 
@@ -99,24 +87,24 @@ export default function AboutPage() {
 						{[
 							{
 								Icon: Compass,
-								title: "Our Mission",
-								copy: "Create beautiful, functional interiors that feel effortless to live and work in.",
+								titleKey: "ourMission",
+								descKey: "missionText",
 							},
 							{
 								Icon: Eye,
-								title: "Our Vision",
-								copy: "Be Thailand's most trusted interior construction partner for discerning, detail-focused clients.",
+								titleKey: "ourVision",
+								descKey: "visionText",
 							},
-						].map(({ Icon, title, copy }) => (
+						].map(({ Icon, titleKey, descKey }) => (
 							<div
-								key={title}
+								key={titleKey}
 								className="flex flex-col items-center text-center rounded-2xl bg-white p-10 shadow-sm border border-zinc-100 hover:shadow-md transition-shadow duration-300"
 							>
 								<div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-zinc-100 text-black">
 									<Icon className="h-8 w-8" />
 								</div>
-								<h2 className="text-2xl font-semibold text-black mb-4">{title}</h2>
-								<p className="text-zinc-600 leading-relaxed max-w-md">{copy}</p>
+								<h2 className="text-2xl font-semibold text-black mb-4">{t(titleKey)}</h2>
+								<p className="text-zinc-600 leading-relaxed max-w-md">{t(descKey)}</p>
 							</div>
 						))}
 					</div>
@@ -125,23 +113,20 @@ export default function AboutPage() {
 				<section className="py-20 px-6 md:px-12">
 					<div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 						<div className="lg:col-span-5 space-y-6">
-							<p className="text-[10px] uppercase tracking-[0.25em] text-zinc-400 font-semibold">Our philosophy</p>
+							<p className="text-[10px] uppercase tracking-[0.25em] text-zinc-400 font-semibold">{t("ourPhilosophy")}</p>
 							<h2 className="text-3xl md:text-4xl font-semibold leading-tight text-black">
-								Craftsmanship in every detail.
+								{t("craftsmanshipTitle")}
 							</h2>
 							<p className="text-zinc-600 leading-relaxed">
-								We curate atmospheres—balancing traditional craftsmanship with modern, minimalist lines. Every material,
-								joint, and finish is considered so the final space feels calm, intentional, and built to last.
+								{t("philosophyDescription")}
 							</p>
 							<div className="space-y-4">
-								{["Sustainable material choices", "Client-centric collaboration", "Precision engineering and QC"].map(
-									(item) => (
-										<div key={item} className="flex items-center gap-3">
-											<CheckCircle2 className="h-5 w-5 text-black" />
-											<span className="text-zinc-700">{item}</span>
-										</div>
-									)
-								)}
+								{philosophyPoints.map((item) => (
+									<div key={item} className="flex items-center gap-3">
+										<CheckCircle2 className="h-5 w-5 text-black" />
+										<span className="text-zinc-700">{item}</span>
+									</div>
+								))}
 							</div>
 						</div>
 
@@ -161,20 +146,20 @@ export default function AboutPage() {
 				</section>
 
 
-                <section className="w-full py-24 bg-black text-white text-center px-6">
-                    <h2 className="text-3xl md:text-5xl font-serif mb-6">
-                        Ready to transform your space?
-                    </h2>
-                    <p className="text-gray-400 font-light mb-10 max-w-xl mx-auto">
-                        Let's discuss how we can bring your vision to life with our expertise.
-                    </p>
-                    <Link
-                        href="#contact"
-                        className="inline-block px-10 py-4 bg-white text-black text-xs uppercase tracking-widest font-medium hover:bg-gray-200 transition-colors"
-                    >
-                        Start a Project
-                    </Link>
-                </section>
+				<section className="w-full py-24 bg-black text-white text-center px-6">
+					<h2 className="text-3xl md:text-5xl font-serif mb-6">
+						{t("readyToTransform")}
+					</h2>
+					<p className="text-gray-400 font-light mb-10 max-w-xl mx-auto">
+						{t("letDiscuss")}
+					</p>
+					<Link
+						href="/contactus"
+						className="inline-block px-10 py-4 bg-white text-black text-xs uppercase tracking-widest font-medium hover:bg-gray-200 transition-colors"
+					>
+						{t("startAProject")}
+					</Link>
+				</section>
 			</main>
 		</div>
 	);

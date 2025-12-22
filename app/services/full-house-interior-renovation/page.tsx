@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 import Navbar from "../../components/Navbar";
 import {
@@ -26,40 +29,43 @@ const galleryImages = [
 	},
 ];
 
-const features = [
-	{
-		title: "Demolition & Structure",
-		copy: "Safe demolition of existing interiors and precise structural adjustments to open up spaces and redefine layouts.",
-		icon: Hammer,
-	},
-	{
-		title: "MEP Systems",
-		copy: "Complete overhaul of Mechanical, Electrical, and Plumbing systems to ensure safety, efficiency, and modern standards.",
-		icon: Zap,
-	},
-	{
-		title: "Flooring & Finishes",
-		copy: "Installation of premium flooring, wall treatments, and painting using high-quality materials for a flawless finish.",
-		icon: Layers,
-	},
-	{
-		title: "Lighting Design",
-		copy: "Architectural lighting planning and installation to enhance mood, functionality, and spatial aesthetics.",
-		icon: Lightbulb,
-	},
-	{
-		title: "Built-ins & Furniture",
-		copy: "Custom carpentry and built-in furniture designed specifically for your space and storage needs.",
-		icon: Sofa,
-	},
-	{
-		title: "Project Management",
-		copy: "End-to-end supervision, timeline control, and quality assurance to ensure a stress-free renovation experience.",
-		icon: ClipboardCheck,
-	},
-];
-
 export default function FullHouseInteriorRenovationPage() {
+	const t = useTranslations("services");
+	const tFull = useTranslations("services.fullRenovation");
+
+	const features = [
+		{
+			titleKey: "demolitionStructure",
+			descKey: "demolitionStructureDesc",
+			icon: Hammer,
+		},
+		{
+			titleKey: "mepSystems",
+			descKey: "mepSystemsDesc",
+			icon: Zap,
+		},
+		{
+			titleKey: "flooringFinishes",
+			descKey: "flooringFinishesDesc",
+			icon: Layers,
+		},
+		{
+			titleKey: "lightingDesign",
+			descKey: "lightingDesignDesc",
+			icon: Lightbulb,
+		},
+		{
+			titleKey: "builtInsFurniture",
+			descKey: "builtInsFurnitureDesc",
+			icon: Sofa,
+		},
+		{
+			titleKey: "projectManagement",
+			descKey: "projectManagementDesc",
+			icon: ClipboardCheck,
+		},
+	];
+
 	return (
 		<div className="flex min-h-screen flex-col bg-white text-black">
 			<Navbar />
@@ -77,31 +83,29 @@ export default function FullHouseInteriorRenovationPage() {
 						/>
 					</div>
 					<div className="relative z-10 px-6 text-center text-white">
-						<p className="mb-4 text-[10px] uppercase tracking-[0.2em] opacity-90 md:text-xs">Our Services</p>
-						<h1 className="text-4xl leading-tight md:text-6xl">Full Home Interior Construction & Renovation</h1>
+						<p className="mb-4 text-[10px] uppercase tracking-[0.2em] opacity-90 md:text-xs">{t("ourServices")}</p>
+						<h1 className="text-4xl leading-tight md:text-6xl">{tFull("title")}</h1>
 					</div>
 				</header>
 
 				<section className="mx-auto w-full max-w-4xl px-6 py-20 text-center md:px-12 md:py-24">
-					<h2 className="mb-8 text-2xl md:text-3xl">Complete home transformation.</h2>
+					<h2 className="mb-8 text-2xl md:text-3xl">{tFull("subtitle")}</h2>
 					<p className="text-lg font-light leading-relaxed text-zinc-600">
-						Regen Lanes provides complete home renovations including demolition, structural adjustments, MEP (Mechanical,
-						Electrical, Plumbing), flooring, lighting, built-ins, and comprehensive project management. We handle every detail to
-						turn your vision into a livable masterpiece.
+						{tFull("description")}
 					</p>
 				</section>
 
 				<section className="w-full bg-zinc-50 px-6 py-20 md:px-12 md:py-24">
 					<div className="mx-auto max-w-7xl">
 						<div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-							{features.map(({ title, copy, icon: Icon }) => (
+							{features.map(({ titleKey, descKey, icon: Icon }) => (
 								<div
-									key={title}
+									key={titleKey}
 									className="rounded-sm border border-zinc-100 bg-white p-8 transition-shadow duration-300 hover:shadow-lg"
 								>
 									<Icon className="mb-6 h-8 w-8 stroke-1 text-black" />
-									<h3 className="mb-3 text-xl">{title}</h3>
-									<p className="text-sm font-light leading-relaxed text-zinc-600">{copy}</p>
+									<h3 className="mb-3 text-xl">{tFull(titleKey)}</h3>
+									<p className="text-sm font-light leading-relaxed text-zinc-600">{tFull(descKey)}</p>
 								</div>
 							))}
 						</div>
@@ -125,16 +129,14 @@ export default function FullHouseInteriorRenovationPage() {
 						</div>
 
 						<div>
-							<p className="mb-6 text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-400">Why Full Renovation?</p>
-							<h2 className="mb-8 text-3xl leading-tight md:text-4xl">Reimagining your sanctuary from the ground up.</h2>
+							<p className="mb-6 text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-400">{tFull("whyFullRenovation")}</p>
+							<h2 className="mb-8 text-3xl leading-tight md:text-4xl">{tFull("whyTitle")}</h2>
 							<div className="space-y-6 text-zinc-600">
 								<p>
-									A full home renovation allows for a cohesive design language throughout your property. It resolves underlying
-									structural issues and upgrades aging systems, adding significant value and comfort to your asset.
+									{tFull("whyDesc1")}
 								</p>
 								<p>
-									We approach each project as a collaboration, respecting the architectural integrity of the building while injecting
-									modern functionality tailored to your lifestyle.
+									{tFull("whyDesc2")}
 								</p>
 							</div>
 							<div className="mt-10">
@@ -142,7 +144,7 @@ export default function FullHouseInteriorRenovationPage() {
 									href="/contactus"
 									className="inline-flex items-center gap-2 border-b border-black pb-1 text-xs font-medium uppercase tracking-[0.2em] text-black transition-opacity hover:opacity-60"
 								>
-									Request a Consultation
+									{t("requestConsultation")}
 									<ArrowRight className="h-4 w-4" />
 								</Link>
 							</div>

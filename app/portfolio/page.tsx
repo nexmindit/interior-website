@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Navbar from "../components/Navbar";
+import { useTranslations } from "next-intl";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 type Project = {
@@ -94,6 +95,7 @@ const projects: Project[] = [
 type FilterCategory = "all" | "residential" | "commercial" | "furniture";
 
 export default function PortfolioPage() {
+  const t = useTranslations("portfolio");
   const [activeFilter, setActiveFilter] = useState<FilterCategory>("all");
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -156,10 +158,10 @@ export default function PortfolioPage() {
       {/* Header */}
       <header className="w-full pt-32 pb-12 px-6 md:px-12 text-center fade-in-up">
         <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-400 mb-6 font-medium">
-          Selected Works
+          {t("selectedWorks")}
         </p>
         <h1 className="text-4xl md:text-6xl font-light mb-8 text-zinc-900">
-          Our Portfolio
+          {t("title")}
         </h1>
       </header>
 
@@ -256,11 +258,10 @@ export default function PortfolioPage() {
                   e.stopPropagation();
                   setCurrentIndex(index);
                 }}
-                className={`relative w-12 h-12 md:w-16 md:h-16 flex-shrink-0 overflow-hidden transition-all duration-200 ${
-                  index === currentIndex
+                className={`relative w-12 h-12 md:w-16 md:h-16 flex-shrink-0 overflow-hidden transition-all duration-200 ${index === currentIndex
                     ? "ring-2 ring-white opacity-100"
                     : "opacity-50 hover:opacity-80"
-                }`}
+                  }`}
               >
                 <Image
                   src={project.image}

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { Award, FileCheck, Clock, Ruler, Blocks } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import Image from "next/image";
 import Navbar from "./components/Navbar";
@@ -11,45 +12,39 @@ const heroImage =
 
 const projects = [
   {
-    title: "The Urban Loft",
+    titleKey: "urbanLoft",
     image:
       "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?q=80&w=2070&auto=format&fit=crop",
   },
   {
-    title: "Sathorn Residence",
+    titleKey: "sathornResidence",
     image:
       "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?q=80&w=2076&auto=format&fit=crop",
     span: "lg:col-span-2",
   },
   {
-    title: "Office HQ",
+    titleKey: "officeHQ",
     image:
       "https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2000&auto=format&fit=crop",
     span: "lg:col-span-2",
   },
   {
-    title: "Minimal Kitchen",
+    titleKey: "minimalKitchen",
     image:
       "https://images.unsplash.com/photo-1616047006789-b7af5afb8c20?q=80&w=2080&auto=format&fit=crop",
   },
 ];
 
-const services = [
-  {
-    title: "Residential",
-    copy: "Full-scale renovation and interior styling for modern homes and condos.",
-  },
-  {
-    title: "Commercial",
-    copy: "Office and retail design that communicates brand identity through space.",
-  },
-  {
-    title: "Consultation",
-    copy: "Space planning, 3D rendering, and curated material selection advice.",
-  },
-];
+const projectTitles: Record<string, string> = {
+  urbanLoft: "The Urban Loft",
+  sathornResidence: "Sathorn Residence",
+  officeHQ: "Office HQ",
+  minimalKitchen: "Minimal Kitchen",
+};
 
 export default function Home() {
+  const t = useTranslations("home");
+
   // Slider images: hero + project images
   const slideImages = [heroImage, ...projects.map((p) => p.image)];
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -70,6 +65,20 @@ export default function Home() {
   const prevSlide = () => setCurrentSlide((s) => (s - 1 + slideImages.length) % slideImages.length);
   const nextSlide = () => setCurrentSlide((s) => (s + 1) % slideImages.length);
 
+  const whyChooseItems = [
+    { Icon: Award, titleKey: "qualityWorkmanship", descKey: "qualityWorkmanshipDesc" },
+    { Icon: FileCheck, titleKey: "transparentPricing", descKey: "transparentPricingDesc" },
+    { Icon: Clock, titleKey: "fastReliable", descKey: "fastReliableDesc" },
+    { Icon: Ruler, titleKey: "tailoredToYou", descKey: "tailoredToYouDesc" },
+    { Icon: Blocks, titleKey: "oneStopPartner", descKey: "oneStopPartnerDesc" },
+  ];
+
+  const services = [
+    { titleKey: "residential", descKey: "residentialDesc" },
+    { titleKey: "commercial", descKey: "commercialDesc" },
+    { titleKey: "consultation", descKey: "consultationDesc" },
+  ];
+
   return (
     <div className="min-h-screen bg-white text-zinc-900">
       <Navbar />
@@ -77,26 +86,26 @@ export default function Home() {
       <header className="relative flex min-h-screen items-center justify-center px-6 pt-32 pb-16">
         <div className="mx-auto max-w-5xl text-center">
           <p className="text-xs font-medium uppercase tracking-[0.3em] text-zinc-400">
-            Regen Lanes — Interior Construction & Custom Furniture
+            {t("tagline")}
           </p>
           <h1 className="mt-6 text-4xl font-light leading-tight text-black md:text-7xl">
-            Interior Construction • Renovation • Custom Furniture
+            {t("heroTitle")}
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-500">
-            At Regen Lanes, we transform spaces with precision, creativity, and craftsmanship. Whether you’re renovating an entire home or upgrading a single room, our team delivers beautiful, functional interiors built to last. From full-scale construction to bespoke furniture, we bring your ideas to life with exceptional quality — and at a fraction of the cost.
+            {t("heroDescription")}
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
               href="/portfolio"
               className="inline-flex items-center justify-center border border-black px-8 py-3 text-sm font-medium uppercase tracking-widest transition hover:bg-black hover:text-white"
             >
-              View portfolio
+              {t("viewPortfolio")}
             </a>
             <a
               href="/contactus"
               className="inline-flex items-center justify-center px-8 py-3 text-sm font-medium uppercase tracking-widest text-zinc-500 transition hover:text-black"
             >
-              Start a project
+              {t("startProject")}
             </a>
           </div>
           <div className="mt-16">
@@ -111,9 +120,8 @@ export default function Home() {
                     alt={`Slide ${idx + 1}`}
                     fill
                     sizes="(min-width: 1024px) 1024px, 100vw"
-                    className={`absolute inset-0 object-cover ${
-                      idx === currentSlide ? "fade-enter-active" : "fade-exit-active"
-                    }`}
+                    className={`absolute inset-0 object-cover ${idx === currentSlide ? "fade-enter-active" : "fade-exit-active"
+                      }`}
                     style={{ display: Math.abs(idx - currentSlide) > 1 ? "none" : "block" }}
                     priority={idx === 0}
                   />
@@ -151,9 +159,8 @@ export default function Home() {
                   <button
                     key={i}
                     onClick={() => setCurrentSlide(i)}
-                    className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 focus:outline-none ${
-                      i === currentSlide ? "scale-110 bg-white" : "bg-white/50 hover:bg-white/75"
-                    }`}
+                    className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 focus:outline-none ${i === currentSlide ? "scale-110 bg-white" : "bg-white/50 hover:bg-white/75"
+                      }`}
                     aria-label={`Go to slide ${i + 1}`}
                   />
                 ))}
@@ -166,13 +173,13 @@ export default function Home() {
       <section id="about" className="bg-zinc-50 px-6 py-20">
         <div className="mx-auto max-w-4xl text-center">
           <span className="mb-4 block text-xs font-bold uppercase tracking-[0.3em] text-zinc-400">
-            What We Do
+            {t("whatWeDo")}
           </span>
           <h2 className="text-3xl font-light text-black md:text-4xl">
-            Redefining the lanes of living.
+            {t("redefiningLanes")}
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-zinc-600">
-            At Regen Lanes Holding Company Limited, we provide end-to-end interior construction services — from structural renovations to finishing details. Whether you’re transforming your entire home, upgrading your kitchen, redesigning your bathroom, or refreshing a single room, our team delivers flawless results every time.
+            {t("whatWeDoDescription")}
           </p>
         </div>
       </section>
@@ -183,38 +190,32 @@ export default function Home() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           {/* Left Column: Content */}
           <div>
-            <p className="text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-6 font-medium">Services</p>
-            <h2 className="text-3xl md:text-4xl serif-font mb-8 text-brand-black leading-tight">What We Do</h2>
+            <p className="text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-6 font-medium">{t("services")}</p>
+            <h2 className="text-3xl md:text-4xl serif-font mb-8 text-brand-black leading-tight">{t("whatWeDoTitle")}</h2>
 
             <div className="space-y-6 text-brand-gray font-light leading-relaxed text-sm md:text-base">
               <p>
-                At <span className="font-medium text-black">Regen Lanes Holding Company Limited</span>, we provide end-to-end interior construction services — from structural renovations to finishing details. Whether you are transforming your entire home, upgrading your kitchen, redesigning your bathroom, or refreshing a single room, our team delivers flawless results every time.
+                {t("servicesDescription1")}
               </p>
               <p>
-                We also build custom furniture, handcrafted to your style and measurements. Show us a picture, and we will recreate it at a fraction of the cost without compromising on quality.
+                {t("servicesDescription2")}
               </p>
             </div>
           </div>
 
           {/* Right Column: Why Choose Us */}
           <div className="bg-white p-8 md:p-12 rounded-xl shadow-[0_2px_20px_rgba(0,0,0,0.03)] border border-gray-100">
-            <h3 className="text-2xl serif-font mb-8 text-brand-black">Why Choose Regen Lanes</h3>
+            <h3 className="text-2xl serif-font mb-8 text-brand-black">{t("whyChoose")}</h3>
 
             <ul className="space-y-6">
-              {[
-                { Icon: Award, title: "Quality Workmanship", desc: "Excellence in every detail." },
-                { Icon: FileCheck, title: "Transparent Pricing", desc: "No hidden costs, just honest value." },
-                { Icon: Clock, title: "Fast & Reliable", desc: "On time, every time." },
-                { Icon: Ruler, title: "Tailored to You", desc: "Customized to fit your lifestyle." },
-                { Icon: Blocks, title: "One-Stop Renovation Partner", desc: "From concept to completion." },
-              ].map((item, idx) => (
+              {whyChooseItems.map((item, idx) => (
                 <li key={idx} className="flex items-start gap-4 group">
                   <div className="w-10 h-10 shrink-0 flex items-center justify-center rounded-full bg-gray-50 text-black group-hover:bg-black group-hover:text-white transition-colors duration-300">
                     <item.Icon className="w-5 h-5" />
                   </div>
                   <div className="pt-2">
-                    <h4 className="text-sm font-semibold text-brand-black uppercase tracking-wide mb-1">{item.title}</h4>
-                    <p className="text-xs text-gray-400 font-light">{item.desc}</p>
+                    <h4 className="text-sm font-semibold text-brand-black uppercase tracking-wide mb-1">{t(item.titleKey)}</h4>
+                    <p className="text-xs text-gray-400 font-light">{t(item.descKey)}</p>
                   </div>
                 </li>
               ))}
@@ -228,32 +229,32 @@ export default function Home() {
           <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-xs uppercase tracking-[0.3em] text-zinc-400">
-                selected works
+                {t("selectedWorks")}
               </p>
-              <h2 className="mt-3 text-3xl font-light text-black">Spatial case studies</h2>
+              <h2 className="mt-3 text-3xl font-light text-black">{t("spatialCaseStudies")}</h2>
             </div>
             <a
               href="#"
               className="text-sm text-zinc-500 transition hover:text-black"
             >
-              See all →
+              {t("seeAll")}
             </a>
           </div>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project) => (
               <div
-                key={project.title}
+                key={project.titleKey}
                 className={`group relative h-80 overflow-hidden rounded-2xl ${project.span ?? ""}`}
               >
                 <Image
                   src={project.image}
-                  alt={project.title}
+                  alt={projectTitles[project.titleKey]}
                   fill
                   sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
                   className="absolute inset-0 object-cover transition duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition duration-300 group-hover:opacity-100">
-                  <p className="text-lg font-light text-white">{project.title}</p>
+                  <p className="text-lg font-light text-white">{projectTitles[project.titleKey]}</p>
                 </div>
               </div>
             ))}
@@ -264,16 +265,16 @@ export default function Home() {
       <section id="services" className="bg-black px-6 py-20 text-white">
         <div className="mx-auto max-w-6xl">
           <h2 className="text-center text-3xl font-light md:text-4xl">
-            Our expertise
+            {t("ourExpertise")}
           </h2>
           <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
             {services.map((service) => (
               <div
-                key={service.title}
+                key={service.titleKey}
                 className="rounded-2xl border border-zinc-800 p-8 text-center transition hover:border-white/80"
               >
-                <h3 className="text-xl font-semibold">{service.title}</h3>
-                <p className="mt-3 text-sm text-zinc-400">{service.copy}</p>
+                <h3 className="text-xl font-semibold">{t(service.titleKey)}</h3>
+                <p className="mt-3 text-sm text-zinc-400">{t(service.descKey)}</p>
               </div>
             ))}
           </div>
@@ -283,26 +284,25 @@ export default function Home() {
       <section id="contact" className="px-6 py-20">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-xs uppercase tracking-[0.3em] text-zinc-400">
-            start your project
+            {t("startYourProject")}
           </p>
-          <h2 className="mt-4 text-3xl font-light text-black">Tell us about your space.</h2>
+          <h2 className="mt-4 text-3xl font-light text-black">{t("tellUsAboutSpace")}</h2>
           <p className="mt-3 text-base text-zinc-500">
-            Share your ambitions and we will respond with a tailored scope,
-            timeline, and investment guide.
+            {t("shareAmbitions")}
           </p>
         </div>
         <form className="mx-auto mt-12 max-w-3xl space-y-6">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <label className="text-left text-sm font-medium text-zinc-600">
-              Name
+              {t("name")}
               <input
                 type="text"
-                placeholder="Your name"
+                placeholder={t("yourName")}
                 className="mt-2 w-full border-b border-zinc-300 pb-2 text-base outline-none transition focus:border-black"
               />
             </label>
             <label className="text-left text-sm font-medium text-zinc-600">
-              Email
+              {t("email")}
               <input
                 type="email"
                 placeholder="email@address.com"
@@ -311,10 +311,10 @@ export default function Home() {
             </label>
           </div>
           <label className="block text-left text-sm font-medium text-zinc-600">
-            Message
+            {t("message")}
             <textarea
               rows={4}
-              placeholder="Tell us about your needs..."
+              placeholder={t("tellUsNeeds")}
               className="mt-2 w-full border-b border-zinc-300 pb-2 text-base outline-none transition focus:border-black"
             />
           </label>
@@ -323,7 +323,7 @@ export default function Home() {
               type="submit"
               className="inline-flex items-center justify-center bg-black px-10 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-white transition hover:bg-zinc-800"
             >
-              Send inquiry
+              {t("sendInquiry")}
             </button>
           </div>
         </form>

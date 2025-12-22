@@ -1,12 +1,17 @@
+"use client";
+
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 const socialLinks = [
-  { label: "Instagram", href: "#" },
-  { label: "Facebook", href: "#" },
-  { label: "TikTok", href: "#" },
+  { labelKey: "Instagram", href: "#" },
+  { labelKey: "Facebook", href: "#" },
+  { labelKey: "TikTok", href: "#" },
 ];
 
 export default function Footer() {
+  const t = useTranslations("footer");
+
   return (
     <footer className="border-t border-zinc-100 bg-zinc-50 px-6 py-12">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 text-sm text-zinc-500 md:flex-row">
@@ -22,12 +27,12 @@ export default function Footer() {
           <span className="font-semibold lowercase">regenlanes</span>
         </div>
 
-        <p className="text-center">© 2024 Regenlanes. All rights reserved.</p>
+        <p className="text-center">{t("copyright")}</p>
 
         <div className="flex gap-6">
           {socialLinks.map((link) => (
-            <a key={link.label} href={link.href} className="transition hover:text-black">
-              {link.label}
+            <a key={link.labelKey} href={link.href} className="transition hover:text-black">
+              {link.labelKey}
             </a>
           ))}
         </div>

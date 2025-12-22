@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/Footer";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale, getMessages } from "next-intl/server";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -24,17 +26,23 @@ export const metadata: Metadata = {
   authors: [{ name: "Regenlanes" }],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+  const messages = await getMessages();
+
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang={locale} className="scroll-smooth">
       <body className={`${manrope.variable} antialiased bg-white text-black`}>
-        {children}
-        <Footer />
+        <NextIntlClientProvider messages={messages}>
+          {children}
+          <Footer />
+        </NextIntlClientProvider>
       </body>
     </html>
   );
 }
+

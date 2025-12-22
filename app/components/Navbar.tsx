@@ -4,34 +4,36 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 type SubLink = {
   href: string;
-  label: string;
+  labelKey: string;
 };
 
 type NavLink = {
   href: string;
-  label: string;
+  labelKey: string;
   subLinks?: SubLink[];
 };
 
 const navLinks: NavLink[] = [
-  { href: "/", label: "Home" },
-  { href: "/aboutus", label: "About us" },
-  { href: "/portfolio", label: "Portfolio" },
+  { href: "/", labelKey: "home" },
+  { href: "/aboutus", labelKey: "about" },
+  { href: "/portfolio", labelKey: "portfolio" },
   {
     href: "/services/full-house-interior-renovation",
-    label: "Services",
+    labelKey: "services",
     subLinks: [
-      { label: "Full Home Interior Construction & Renovation", href: "/services/full-house-interior-renovation" },
-      { label: "Kitchen Remodeling", href: "/services/kitchen-remodelling" },
-      { label: "Bathroom Renovation", href: "/services/bathroom-renovation" },
-      { label: "Single Room Transformations", href: "/services/single-room-transformation" },
-      { label: "Custom Furniture", href: "/services/custom-furniture" },
+      { labelKey: "fullHome", href: "/services/full-house-interior-renovation" },
+      { labelKey: "kitchen", href: "/services/kitchen-remodelling" },
+      { labelKey: "bathroom", href: "/services/bathroom-renovation" },
+      { labelKey: "singleRoom", href: "/services/single-room-transformation" },
+      { labelKey: "customFurniture", href: "/services/custom-furniture" },
     ],
   },
-  { href: "/contactus", label: "Contact" },
+  { href: "/contactus", labelKey: "contact" },
 ];
 
 function isActiveLink(pathname: string, href: string) {
@@ -46,6 +48,8 @@ function isActiveLink(pathname: string, href: string) {
 export default function Navbar() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const t = useTranslations("nav");
+  const tServices = useTranslations("navServices");
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -59,7 +63,7 @@ export default function Navbar() {
 
         <div className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
-            <div key={link.label} className="group relative">
+            <div key={link.labelKey} className="group relative">
               <Link
                 href={link.href}
                 className={`flex items-center gap-1 py-2 text-sm transition ${isActiveLink(pathname, link.href)
@@ -68,7 +72,7 @@ export default function Navbar() {
                   }`}
                 onClick={closeMenu}
               >
-                {link.label}
+                {t(link.labelKey)}
                 {link.subLinks && (
                   <svg
                     className="h-4 w-4 transition-transform group-hover:rotate-180"
@@ -87,11 +91,11 @@ export default function Navbar() {
                   <div className="rounded-xl border border-zinc-100 bg-white p-2 shadow-lg ring-1 ring-black/5">
                     {link.subLinks.map((sub) => (
                       <Link
-                        key={sub.label}
+                        key={sub.labelKey}
                         href={sub.href}
                         className="block rounded-lg px-4 py-3 text-sm text-zinc-600 hover:bg-zinc-50 hover:text-black"
                       >
-                        {sub.label}
+                        {tServices(sub.labelKey)}
                       </Link>
                     ))}
                   </div>
@@ -99,43 +103,47 @@ export default function Navbar() {
               )}
             </div>
           ))}
+
+          <LanguageSwitcher />
         </div>
 
-        <button
-          type="button"
-          className="md:hidden"
-          onClick={() => setMenuOpen((prev) => !prev)}
-          aria-label="Toggle navigation"
-        >
-          <svg className="h-6 w-6" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
+        <div className="flex items-center gap-4 md:hidden">
+          <LanguageSwitcher />
+          <button
+            type="button"
+            onClick={() => setMenuOpen((prev) => !prev)}
+            aria-label="Toggle navigation"
+          >
+            <svg className="h-6 w-6" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
       </div>
 
       <div
         className={`${menuOpen ? "block" : "hidden"} max-h-[80vh] overflow-y-auto border-t border-zinc-100 bg-white md:hidden`}
       >
         {navLinks.map((link) => (
-          <div key={link.label}>
+          <div key={link.labelKey}>
             <Link
               href={link.href}
               className={`block px-6 py-4 text-sm font-medium transition hover:bg-zinc-50 ${isActiveLink(pathname, link.href) ? "text-black" : "text-zinc-900"
                 }`}
               onClick={() => (link.subLinks ? undefined : closeMenu())}
             >
-              {link.label}
+              {t(link.labelKey)}
             </Link>
             {link.subLinks && (
               <div className="bg-zinc-50 px-6 py-2">
                 {link.subLinks.map((sub) => (
                   <Link
-                    key={sub.label}
+                    key={sub.labelKey}
                     href={sub.href}
                     className="block py-3 text-sm text-zinc-500 hover:text-black"
                     onClick={closeMenu}
                   >
-                    • {sub.label}
+                    • {tServices(sub.labelKey)}
                   </Link>
                 ))}
               </div>
