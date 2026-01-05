@@ -1,8 +1,6 @@
-"use client";
-
 import Image from "next/image";
 import { Link } from "../../../i18n/navigation";
-import { useTranslations } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import Navbar from "../../../components/Navbar";
 import {
@@ -14,6 +12,10 @@ import {
 	Sofa,
 	Zap,
 } from "lucide-react";
+
+export async function generateStaticParams() {
+	return [{ locale: 'en' }, { locale: 'th' }];
+}
 
 const heroImage =
 	"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2670&auto=format&fit=crop";
@@ -29,9 +31,16 @@ const galleryImages = [
 	},
 ];
 
-export default function FullHouseInteriorRenovationPage() {
-	const t = useTranslations("services");
-	const tFull = useTranslations("services.fullRenovation");
+export default async function FullHouseInteriorRenovationPage({
+	params
+}: {
+	params: Promise<{ locale: string }>;
+}) {
+	const { locale } = await params;
+	setRequestLocale(locale);
+
+	const t = await getTranslations("services");
+	const tFull = await getTranslations("services.fullRenovation");
 
 	const features = [
 		{
