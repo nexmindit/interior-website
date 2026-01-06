@@ -191,7 +191,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           {/* Left Column: Content */}
           <div>
-            <p className="text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-6 font-medium">{t("services")}</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-gray-400 mb-6 font-medium">{t("services")}</p>
             <h2 className="text-3xl md:text-4xl serif-font mb-8 text-brand-black leading-tight">{t("whatWeDoTitle")}</h2>
 
             <div className="space-y-6 text-brand-gray font-light leading-relaxed text-sm md:text-base">

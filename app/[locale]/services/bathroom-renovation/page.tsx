@@ -83,7 +83,7 @@ export default async function BathroomRenovationPage({
 
 					<div className="absolute inset-0 flex items-center justify-center px-6 text-center text-white">
 						<div className="space-y-4 max-w-3xl fade-in-up">
-							<p className="text-[10px] uppercase tracking-[0.2em] text-white/90">{t("ourServices")}</p>
+							<p className="text-xs uppercase tracking-[0.2em] text-white/90">{t("ourServices")}</p>
 							<h1 className="text-4xl font-semibold leading-tight md:text-6xl lg:text-7xl">
 								{tBathroom("title")}
 							</h1>
@@ -147,7 +147,7 @@ export default async function BathroomRenovationPage({
 						</div>
 
 						<div className="lg:w-1/2 lg:pl-12">
-							<p className="mb-6 text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-400">{tBathroom("experienceTitle")}</p>
+							<p className="mb-6 text-xs font-medium uppercase tracking-[0.2em] text-zinc-400">{tBathroom("experienceTitle")}</p>
 							<h2 className="mb-8 text-3xl font-semibold leading-tight md:text-4xl">
 								{tBathroom("serenityTitle")}
 							</h2>

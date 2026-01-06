@@ -56,7 +56,7 @@ export default function ContactPage() {
 			<main className="pt-28 pb-20">
 				<section className="px-6 md:px-12">
 					<div className="mx-auto max-w-5xl text-center">
-						<p className="text-[10px] uppercase tracking-[0.2em] text-gray-400 font-medium">{t("getInTouch")}</p>
+						<p className="text-xs uppercase tracking-[0.2em] text-gray-400 font-medium">{t("getInTouch")}</p>
 						<h1 className="mt-4 text-4xl md:text-6xl font-semibold tracking-tight">{t("title")}</h1>
 						<p className="mt-5 text-lg text-zinc-600">
 							{t("description")}
@@ -125,7 +125,7 @@ export default function ContactPage() {
 						<div className="rounded-xl border border-gray-100 bg-gray-50 p-8 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
 							<div className="flex items-start justify-between">
 								<div>
-									<p className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-medium">{t("startProject")}</p>
+									<p className="text-xs uppercase tracking-[0.2em] text-gray-500 font-medium">{t("startProject")}</p>
 									<h3 className="mt-3 text-2xl font-semibold">{t("sendUsMessage")}</h3>
 									<p className="mt-2 text-sm text-gray-600">{t("respondTime")}</p>
 								</div>
