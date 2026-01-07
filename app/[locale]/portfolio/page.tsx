@@ -151,7 +151,7 @@ export default function PortfolioPage() {
 
       {/* Header */}
       <header className="w-full pt-32 pb-12 px-6 md:px-12 text-center fade-in-up">
-        <p className="text-xs uppercase tracking-[0.2em] text-zinc-400 mb-6 font-medium">
+        <p className="text-sm uppercase tracking-[0.2em] text-zinc-400 mb-6 font-medium">
           {t("selectedWorks")}
         </p>
         <h1 className="text-4xl md:text-6xl font-light mb-8 text-zinc-900">

@@ -191,7 +191,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           {/* Left Column: Content */}
           <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-gray-400 mb-6 font-medium">{t("services")}</p>
+            <p className="text-sm uppercase tracking-[0.2em] text-gray-400 mb-6 font-medium">{t("services")}</p>
             <h2 className="text-3xl md:text-4xl serif-font mb-8 text-brand-black leading-tight">{t("whatWeDoTitle")}</h2>
 
             <div className="space-y-6 text-brand-gray font-light leading-relaxed text-sm md:text-base">
@@ -229,7 +229,7 @@ export default function Home() {
         <div className="mx-auto max-w-6xl">
           <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-zinc-400">
+              <p className="text-sm uppercase tracking-[0.3em] text-zinc-400">
                 {t("selectedWorks")}
               </p>
               <h2 className="mt-3 text-3xl font-light text-black">{t("spatialCaseStudies")}</h2>
@@ -284,7 +284,7 @@ export default function Home() {
 
       <section id="contact" className="px-6 py-20">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xs uppercase tracking-[0.3em] text-zinc-400">
+          <p className="text-sm uppercase tracking-[0.3em] text-zinc-400">
             {t("startYourProject")}
           </p>
           <h2 className="mt-4 text-3xl font-light text-black">{t("tellUsAboutSpace")}</h2>

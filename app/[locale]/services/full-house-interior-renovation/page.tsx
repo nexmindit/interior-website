@@ -92,7 +92,7 @@ export default async function FullHouseInteriorRenovationPage({
 						/>
 					</div>
 					<div className="relative z-10 px-6 text-center text-white">
-						<p className="mb-4 text-xs uppercase tracking-[0.2em] opacity-90 md:text-xs">{t("ourServices")}</p>
+						<p className="mb-4 text-sm uppercase tracking-[0.2em] opacity-90">{t("ourServices")}</p>
 						<h1 className="text-4xl leading-tight md:text-6xl">{tFull("title")}</h1>
 					</div>
 				</header>

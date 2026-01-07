@@ -56,7 +56,7 @@ export default function ContactPage() {
 			<main className="pt-28 pb-20">
 				<section className="px-6 md:px-12">
 					<div className="mx-auto max-w-5xl text-center">
-						<p className="text-xs uppercase tracking-[0.2em] text-gray-400 font-medium">{t("getInTouch")}</p>
+						<p className="text-sm uppercase tracking-[0.2em] text-gray-400 font-medium">{t("getInTouch")}</p>
 						<h1 className="mt-4 text-4xl md:text-6xl font-semibold tracking-tight">{t("title")}</h1>
 						<p className="mt-5 text-lg text-zinc-600">
 							{t("description")}
@@ -73,7 +73,7 @@ export default function ContactPage() {
 										<h2 className="text-2xl font-semibold">{t("contactInfo")}</h2>
 										<p className="mt-1 text-sm text-gray-500">{t("companyName")}</p>
 									</div>
-									<span className="text-xs uppercase tracking-[0.2em] text-gray-500">{t("hours")}</span>
+									<span className="text-sm uppercase tracking-[0.2em] text-gray-500">{t("hours")}</span>
 								</div>
 
 								<div className="mt-6 space-y-6">
@@ -86,7 +86,7 @@ export default function ContactPage() {
 												<Icon className="h-5 w-5" />
 											</div>
 											<div>
-												<p className="text-xs uppercase tracking-[0.2em] text-gray-500">{t(labelKey)}</p>
+												<p className="text-sm uppercase tracking-[0.2em] text-gray-500">{t(labelKey)}</p>
 												{href ? (
 													<a href={href} className="mt-1 inline-block text-base font-semibold hover:text-gray-600 transition-colors">
 														{value}
@@ -103,7 +103,7 @@ export default function ContactPage() {
 							<div className="rounded-xl border border-gray-100 bg-white p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
 								<div className="flex items-center justify-between">
 									<h3 className="text-xl font-semibold">{t("connectWithUs")}</h3>
-									<span className="text-xs uppercase tracking-[0.2em] text-gray-500">{t("social")}</span>
+									<span className="text-sm uppercase tracking-[0.2em] text-gray-500">{t("social")}</span>
 								</div>
 								<div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
 									{socialLinks.map(({ label, href, icon: Icon, hover }) => (
@@ -125,7 +125,7 @@ export default function ContactPage() {
 						<div className="rounded-xl border border-gray-100 bg-gray-50 p-8 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
 							<div className="flex items-start justify-between">
 								<div>
-									<p className="text-xs uppercase tracking-[0.2em] text-gray-500 font-medium">{t("startProject")}</p>
+									<p className="text-sm uppercase tracking-[0.2em] text-gray-500 font-medium">{t("startProject")}</p>
 									<h3 className="mt-3 text-2xl font-semibold">{t("sendUsMessage")}</h3>
 									<p className="mt-2 text-sm text-gray-600">{t("respondTime")}</p>
 								</div>
@@ -135,7 +135,7 @@ export default function ContactPage() {
 							<form className="mt-8 space-y-6">
 								<div className="grid grid-cols-1 gap-6 md:grid-cols-2">
 									<div className="space-y-2">
-										<label className="text-xs uppercase tracking-[0.2em] text-gray-500">{t("name")}</label>
+										<label className="text-sm uppercase tracking-[0.2em] text-gray-500">{t("name")}</label>
 										<input
 											type="text"
 											name="name"
@@ -144,7 +144,7 @@ export default function ContactPage() {
 										/>
 									</div>
 									<div className="space-y-2">
-										<label className="text-xs uppercase tracking-[0.2em] text-gray-500">{t("emailLabel")}</label>
+										<label className="text-sm uppercase tracking-[0.2em] text-gray-500">{t("emailLabel")}</label>
 										<input
 											type="email"
 											name="email"
@@ -155,7 +155,7 @@ export default function ContactPage() {
 								</div>
 
 								<div className="space-y-2">
-									<label className="text-xs uppercase tracking-[0.2em] text-gray-500">{t("subject")}</label>
+									<label className="text-sm uppercase tracking-[0.2em] text-gray-500">{t("subject")}</label>
 									<input
 										type="text"
 										name="subject"
@@ -165,7 +165,7 @@ export default function ContactPage() {
 								</div>
 
 								<div className="space-y-2">
-									<label className="text-xs uppercase tracking-[0.2em] text-gray-500">{t("message")}</label>
+									<label className="text-sm uppercase tracking-[0.2em] text-gray-500">{t("message")}</label>
 									<textarea
 										name="message"
 										rows={4}

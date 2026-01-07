@@ -85,7 +85,7 @@ export default async function SingleRoomTransformationPage({
 						/>
 					</div>
 					<div className="relative z-10 px-6 text-center text-white fade-in-up">
-						<p className="mb-4 text-xs uppercase tracking-[0.2em] opacity-90 md:text-xs">{t("ourServices")}</p>
+						<p className="mb-4 text-sm uppercase tracking-[0.2em] opacity-90">{t("ourServices")}</p>
 						<h1 className="mb-6 text-4xl leading-tight md:text-6xl lg:text-7xl">
 							{tSingle("subtitle")}
 						</h1>

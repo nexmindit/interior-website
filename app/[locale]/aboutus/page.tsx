@@ -57,7 +57,7 @@ export default function AboutPage() {
 
 			<main className="pt-24 md:pt-28">
 				<section className="px-6 md:px-12 text-center">
-					<p className="text-xs uppercase tracking-[0.25em] text-zinc-400 mb-5 font-semibold">
+					<p className="text-sm uppercase tracking-[0.25em] text-zinc-400 mb-5 font-semibold">
 						{t("whoWeAre")}
 					</p>
 					<h1 className="text-4xl md:text-6xl font-semibold tracking-tight text-black">
@@ -113,7 +113,7 @@ export default function AboutPage() {
 				<section className="py-20 px-6 md:px-12">
 					<div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 						<div className="lg:col-span-5 space-y-6">
-							<p className="text-xs uppercase tracking-[0.25em] text-zinc-400 font-semibold">{t("ourPhilosophy")}</p>
+							<p className="text-sm uppercase tracking-[0.25em] text-zinc-400 font-semibold">{t("ourPhilosophy")}</p>
 							<h2 className="text-3xl md:text-4xl font-semibold leading-tight text-black">
 								{t("craftsmanshipTitle")}
 							</h2>
@@ -155,7 +155,7 @@ export default function AboutPage() {
 					</p>
 					<Link
 						href="/contactus"
-						className="inline-block px-10 py-4 bg-white text-black text-xs uppercase tracking-widest font-medium hover:bg-gray-200 transition-colors"
+						className="inline-block px-10 py-4 bg-white text-black text-sm uppercase tracking-widest font-medium hover:bg-gray-200 transition-colors"
 					>
 						{t("startAProject")}
 					</Link>

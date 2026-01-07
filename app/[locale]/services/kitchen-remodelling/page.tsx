@@ -85,7 +85,7 @@ export default async function KitchenRemodelingPage({
 
 					<div className="absolute inset-0 flex items-center justify-center px-6 text-center text-white">
 						<div className="space-y-4 max-w-3xl fade-in-up">
-							<p className="text-xs uppercase tracking-[0.2em] text-white/90">{t("ourServices")}</p>
+							<p className="text-sm uppercase tracking-[0.2em] text-white/90">{t("ourServices")}</p>
 							<h1 className="text-4xl font-semibold leading-tight md:text-6xl lg:text-7xl">
 								{tKitchen("title")}
 							</h1>
@@ -161,7 +161,7 @@ export default async function KitchenRemodelingPage({
 						<h2 className="mb-6 text-3xl font-semibold text-white md:text-5xl">
 							{tKitchen("ctaTitle")}
 						</h2>
-						<p className="mb-10 max-w-xl font-light text-zinc-300">
+						<p className="mb-10 max-w-xl mx-auto font-light text-zinc-300">
 							{tKitchen("ctaDesc")}
 						</p>
 						<Link
