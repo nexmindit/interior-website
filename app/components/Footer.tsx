@@ -4,9 +4,10 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 const socialLinks = [
-  { labelKey: "Instagram", href: "#" },
-  { labelKey: "Facebook", href: "#" },
-  { labelKey: "TikTok", href: "#" },
+  { labelKey: "Instagram", href: "https://instagram.com" },
+  { labelKey: "Facebook", href: "https://facebook.com" },
+  { labelKey: "TikTok", href: "https://www.tiktok.com" },
+  { labelKey: "Line", href: "https://lin.ee/rEItfUT3" },
 ];
 
 export default function Footer() {
@@ -31,7 +32,11 @@ export default function Footer() {
 
         <div className="flex gap-6">
           {socialLinks.map((link) => (
-            <a key={link.labelKey} href={link.href} className="transition hover:text-black">
+            <a
+              key={link.labelKey}
+              href={link.href}
+              className="transition hover:text-black"
+            >
               {link.labelKey}
             </a>
           ))}

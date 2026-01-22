@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Footer from "../components/Footer";
+import FloatingButtons from "../components/FloatingButtons";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 
@@ -19,12 +20,12 @@ export const metadata: Metadata = {
 };
 
 export async function generateStaticParams() {
-  return [{ locale: 'en' }, { locale: 'th' }];
+  return [{ locale: "en" }, { locale: "th" }];
 }
 
 export default async function LocaleLayout({
   children,
-  params
+  params,
 }: {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
@@ -37,7 +38,7 @@ export default async function LocaleLayout({
     <NextIntlClientProvider messages={messages}>
       {children}
       <Footer />
+      <FloatingButtons />
     </NextIntlClientProvider>
   );
 }
-
