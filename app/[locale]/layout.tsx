@@ -5,11 +5,14 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 
 export const metadata: Metadata = {
-  title: "Regenlanes | Minimalist Interior Design & Architecture",
+  title:
+    "Regen Lanes | Interior Construction Services. On Time. On Budget. Beyond Expectations",
   description:
     "Regenlanes transforms residential and commercial interiors with precise, minimalist, and architectural detail.",
   keywords: [
-    "Regenlanes",
+    "Regen Lanes",
+    "Interior Construction",
+    "Interior Renovation",
     "Interior Design",
     "Minimalist",
     "Architecture",
